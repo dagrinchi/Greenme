@@ -1,0 +1,52 @@
+<?php
+
+namespace C4C\Bundle\GreenmeBundle\Document;
+
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+
+/**
+* @MongoDB\Document
+*/
+class Report {
+
+	/**
+	* @MongoDB\Id(strategy="auto")
+	*/
+	protected $id;
+
+	/**
+	* @MongoDB\String
+	*/
+	protected $title;
+
+	/**
+	* @MongoDB\String
+	*/
+	protected $location;
+
+	/**
+	* @MongoDB\String
+	*/
+	protected $location_type;
+
+	/**
+	* @MongoDB\String
+	*/
+	protected $picture;
+
+	/**
+	* @MongoDB\ReferenceOne(targetDocument="User")
+	*/
+	protected $user;
+
+	/**
+	* @MongoDB\ReferenceMany(targetDocument="Subcategory")
+	*/
+	protected $sub_categories;
+
+	/**
+	* @MongoDB\Timestamp
+	*/
+	protected $created;
+
+}

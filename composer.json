@@ -24,6 +24,7 @@
         "jms/serializer-bundle": "0.12.*@dev",
         "friendsofsymfony/rest": "dev-master",
         "friendsofsymfony/rest-bundle": "dev-master",
+        "friendsofsymfony/user-bundle": "dev-master",
         "nelmio/api-doc-bundle": "dev-master",
         "doctrine/mongodb-odm": "1.0.*@dev",
         "doctrine/mongodb-odm-bundle": "3.0.*@dev"

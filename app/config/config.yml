@@ -56,6 +56,21 @@ doctrine:
         auto_generate_proxy_classes: %kernel.debug%
         auto_mapping: true
 
+doctrine_mongodb:
+    connections:
+        default:
+            server: mongodb://localhost:27017
+            options: {}
+    default_database: greenme
+    document_managers:
+        default:
+            auto_mapping: true
+
+fos_user:
+    db_driver: mongodb
+    firewall_name: main
+    user_class: C4C\Bundle\GreenmeBundle\Document\User
+
 # Swiftmailer Configuration
 swiftmailer:
     transport: %mailer_transport%
