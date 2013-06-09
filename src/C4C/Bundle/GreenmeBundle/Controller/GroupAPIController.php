@@ -4,6 +4,7 @@ namespace C4C\Bundle\GreenmeBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use FOS\RestBundle\Controller\Annotations\Prefix,
     FOS\RestBundle\Controller\Annotations\NamePrefix,
@@ -15,85 +16,80 @@ use FOS\RestBundle\Controller\Annotations\Prefix,
     FOS\RestBundle\Controller\FOSRestController;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Nelmio\ApiDocBundle\Annotation\ApiDoc;
-use C4C\Bundle\GreenmeBundle\Document\Footprint,
-    C4C\Bundle\GreenmeBundle\Form\Type\FootprintType;
+use C4C\Bundle\GreenmeBundle\Document\Group,
+    C4C\Bundle\GreenmeBundle\Form\Type\GroupType;
 
 /**
- * @Prefix("footprint")
- * @NamePrefix("footprint_")
+ * @Prefix("group")
+ * @NamePrefix("group_")
  */
-class FootprintAPIController  extends FOSRestController {
+class GroupAPIController extends FOSRestController {
 
     private function isAuthenticated() {
-        if ($this->get('security.context')->isGranted('ROLE_USER')) { 
+        if ($this->get('security.context')->isGranted('ROLE_USER')) {
             return TRUE;
         } else {
             return FALSE;
-        }     
+        }
     }
 
     /**
      * @ApiDoc(
      *  resource=true,
-     *  description="Este metodo devuelve el listado de huellas",
+     *  description="Este metodo devuelve el listado de grupos",
      *  statusCodes={
      *         200="Retorna con éxito",
      *         401="Retorna cuando no está autorizado",
-     *         404="Retorna cuando no encuentra una huella."
+     *         404="Retorna cuando no encuentra un grupo"
      *     }
-     * )
+     * )     
      */
     public function getAction() {
-        
         $dm = $this->get('doctrine_mongodb')->getManager();
-        $footp = $dm->getRepository('C4CGreenmeBundle:Footprint')->findAll()->toArray();
-        
-        $view = $this->view($footp, 200)
+        $groups = $dm->getRepository('C4CGreenmeBundle:Group')->findAll()->toArray();
+        $view = $this->view($groups, 200)
                 ->setHeader('Access-Control-Allow-Origin', '*');                
         return $view;
     }
     
+    
     /**
      * @ApiDoc(
-     *  description="Crear una nueva huella",
-     *  input="C4C\Bundle\GreenmeBundle\Form\Type\FootprintType",
+     *  description="Crear un nuevo grupo",
+     *  input="C4C\Bundle\GreenmeBundle\Form\Type\GroupType",
      *  statusCodes={
      *         200="Retorna con éxito",
      *         401="Retorna cuando no está autorizado",
-     *         404="Retorna cuando no encuentra una huella"
+     *         404="Retorna cuando no encuentra un grupo."
      *     }
-     * )
-     * @View
+     * )     
      */
     public function postAction(Request $r) {
-        
-        if (!$this->isAuthenticated()) {
-            $view = new FOSView();
-            return $view->setStatusCode(401);
-        }
-        
+
         $dm = $this->get('doctrine_mongodb')->getManager();
 
 //	$data = json_decode($r->getContent(), true);
 //    	$r->request->replace(is_array($data) ? $data : array());
 
-        $footp = new Footprint();
-        $form = $this->createForm(new FootprintType(), $footp);
+        $group = new Group();
+        $form = $this->createForm(new GroupType('C4C\Bundle\GreenmeBundle\Document\Group'), $group);
         $form->bind($r);
 
         $result = array();
 
         if ($form->isValid()) {
-            $dm->persist($footp);
+            $dm->persist($group);
             $dm->flush();
 
             $result['flash'] = 'Item creado con éxito.';
         } else {
             $view = new FOSView();
-            return $view->setStatusCode(500);            
+            return $view->setStatusCode(500);
         }
 
-        return $footp;
+        $view = $this->view($group, 200)
+                ->setHeader('Access-Control-Allow-Origin', '*');                
+        return $view;
     }
-
+    
 }

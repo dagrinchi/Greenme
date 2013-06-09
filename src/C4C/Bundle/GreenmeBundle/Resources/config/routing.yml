@@ -3,6 +3,22 @@
 #   type: annotation
 #   prefix: /api
 
+C4CGreenmeBundle_GroupAPI:
+  resource: C4C\Bundle\GreenmeBundle\Controller\GroupAPIController
+  type: rest
+  
+C4CGreenmeBundle_UserAPI:
+  resource: C4C\Bundle\GreenmeBundle\Controller\UserAPIController
+  type: rest
+  
+C4CGreenmeBundle_SubcategoryAPI:
+  resource: C4C\Bundle\GreenmeBundle\Controller\SubcategoryAPIController
+  type: rest
+  
+C4CGreenmeBundle_CategoryAPI:
+  resource: C4C\Bundle\GreenmeBundle\Controller\CategoryAPIController
+  type: rest
+  
 C4CGreenmeBundle_ReportAPI:
   resource: C4C\Bundle\GreenmeBundle\Controller\ReportAPIController
   type: rest

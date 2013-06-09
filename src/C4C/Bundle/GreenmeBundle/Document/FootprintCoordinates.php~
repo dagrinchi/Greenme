@@ -1,0 +1,27 @@
+<?php
+
+namespace C4C\Bundle\GreenmeBundle\Document;
+
+use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
+
+/**
+ * @MongoDB\Document
+ */
+class FootprintCoordinates {
+
+    /**
+     * @MongoDB\Id(strategy="auto")
+     */
+    protected $id;
+
+    /** 
+     * @MongoDB\Float 
+     */
+    public $latitude;
+
+    /**
+     * @MongoDB\Float
+     */
+    public $longitude;
+    
+}

@@ -5,48 +5,50 @@ namespace C4C\Bundle\GreenmeBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
-* @MongoDB\Document
-*/
+ * @MongoDB\Document
+ */
 class Subcategory {
 
-	/**
-	* @MongoDB\Id(strategy="auto")
-	*/
-	protected $id;
+    /**
+     * @MongoDB\Id(strategy="auto")
+     */
+    protected $id;
 
-	/**
-	* @MongoDB\ReferenceOne(targetDocument="Category")
-	*/
-	protected $category;
+    /**
+     * @MongoDB\ReferenceOne(targetDocument="Category")
+     */
+    protected $category;
 
-	/**
-	* @MongoDB\String
-	*/
-	protected $name;
+    /**
+     * @MongoDB\String
+     */
+    protected $name;
 
-	/**
-	* @MongoDB\String
-	*/
-	protected $messurement;
+    /**
+     * @MongoDB\String
+     */
+    protected $messurement;
 
-	/**
-	* @MongoDB\Boolean
-	*/
-	protected $is_positive;
+    /**
+     * @MongoDB\Boolean
+     */
+    protected $is_positive;
 
-	/**
-	* @MongoDB\String
-	*/
-	protected $icon;
-
+    /**
+     * @MongoDB\String
+     */
+    protected $icon;
+    
+    public function __toString() {
+        return $this->name;
+    }
 
     /**
      * Get id
      *
      * @return id $id
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -56,8 +58,7 @@ class Subcategory {
      * @param C4C\Bundle\GreenmeBundle\Document\Category $category
      * @return self
      */
-    public function setCategory(\C4C\Bundle\GreenmeBundle\Document\Category $category)
-    {
+    public function setCategory(\C4C\Bundle\GreenmeBundle\Document\Category $category) {
         $this->category = $category;
         return $this;
     }
@@ -67,8 +68,7 @@ class Subcategory {
      *
      * @return C4C\Bundle\GreenmeBundle\Document\Category $category
      */
-    public function getCategory()
-    {
+    public function getCategory() {
         return $this->category;
     }
 
@@ -78,8 +78,7 @@ class Subcategory {
      * @param string $name
      * @return self
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
         return $this;
     }
@@ -89,8 +88,7 @@ class Subcategory {
      *
      * @return string $name
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -100,8 +98,7 @@ class Subcategory {
      * @param string $messurement
      * @return self
      */
-    public function setMessurement($messurement)
-    {
+    public function setMessurement($messurement) {
         $this->messurement = $messurement;
         return $this;
     }
@@ -111,8 +108,7 @@ class Subcategory {
      *
      * @return string $messurement
      */
-    public function getMessurement()
-    {
+    public function getMessurement() {
         return $this->messurement;
     }
 
@@ -122,8 +118,7 @@ class Subcategory {
      * @param boolean $isPositive
      * @return self
      */
-    public function setIsPositive($isPositive)
-    {
+    public function setIsPositive($isPositive) {
         $this->is_positive = $isPositive;
         return $this;
     }
@@ -133,8 +128,7 @@ class Subcategory {
      *
      * @return boolean $isPositive
      */
-    public function getIsPositive()
-    {
+    public function getIsPositive() {
         return $this->is_positive;
     }
 
@@ -144,8 +138,7 @@ class Subcategory {
      * @param string $icon
      * @return self
      */
-    public function setIcon($icon)
-    {
+    public function setIcon($icon) {
         $this->icon = $icon;
         return $this;
     }
@@ -155,8 +148,8 @@ class Subcategory {
      *
      * @return string $icon
      */
-    public function getIcon()
-    {
+    public function getIcon() {
         return $this->icon;
     }
+
 }

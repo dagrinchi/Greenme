@@ -70,6 +70,8 @@ fos_user:
     db_driver: mongodb
     firewall_name: main
     user_class: C4C\Bundle\GreenmeBundle\Document\User
+    group:
+        group_class: C4C\Bundle\GreenmeBundle\Document\Group
 
 # Swiftmailer Configuration
 swiftmailer:

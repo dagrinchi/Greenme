@@ -19,4 +19,69 @@ class Group extends BaseGroup
      * @MongoDB\String
      */
     protected $name;
+
+
+    /**
+    * @MongoDB\Date
+    */
+    protected $created;
+
+
+    public function __construct() {
+        $this->created = new \MongoDate();
+    }
+
+    /**
+     * Get id
+     *
+     * @return id $id
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string $name
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set created
+     *
+     * @param timestamp $created
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return timestamp $created
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
 }

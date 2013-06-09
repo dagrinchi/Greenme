@@ -5,43 +5,43 @@ namespace C4C\Bundle\GreenmeBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
-* @MongoDB\Document
-*/
+ * @MongoDB\Document
+ */
 class Footprint {
-	
-	/**
-	* @MongoDB\Id(strategy="auto")
-	*/
-	protected $id;
-
-	/**
-	* @MongoDB\ReferenceOne(targetDocument="Subcategory")
-	*/
-	protected $sub_category;
-
-	/**
-	* @MongoDB\Float
-	*/
-	protected $value;
 
     /**
-    * @MongoDB\String
-    */
-    protected $location;
+     * @MongoDB\Id(strategy="auto")
+     */
+    protected $id;
 
     /**
-    * @MongoDB\String
-    */
+     * @MongoDB\ReferenceOne(targetDocument="Subcategory")
+     */
+    protected $sub_category;
+
+    /**
+     * @MongoDB\Float
+     */
+    protected $value;
+    
+    /**
+     * @MongoDB\EmbedOne(targetDocument="FootprintCoordinates")
+     */
+    public $coordinates;
+
+    /**
+     * @MongoDB\String
+     */
     protected $location_type;
 
-	/**
-	* @MongoDB\ReferenceOne(targetDocument="User")
-	*/
-	protected $user;
+    /**
+     * @MongoDB\ReferenceOne(targetDocument="User")
+     */
+    protected $user;
 
     /**
-    * @MongoDB\Timestamp
-    */
+     * @MongoDB\Date
+     */
     protected $created;
 
     /**
@@ -49,13 +49,12 @@ class Footprint {
      *
      * @return id $id
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
     public function __construct() {
-        $this->created = new \DateTime("now");
+        $this->created = new \MongoDate();
     }
 
     /**
@@ -64,8 +63,7 @@ class Footprint {
      * @param C4C\Bundle\GreenmeBundle\Document\Subcategory $subCategory
      * @return self
      */
-    public function setSubCategory(\C4C\Bundle\GreenmeBundle\Document\Subcategory $subCategory)
-    {
+    public function setSubCategory(\C4C\Bundle\GreenmeBundle\Document\Subcategory $subCategory) {
         $this->sub_category = $subCategory;
         return $this;
     }
@@ -75,8 +73,7 @@ class Footprint {
      *
      * @return C4C\Bundle\GreenmeBundle\Document\Subcategory $subCategory
      */
-    public function getSubCategory()
-    {
+    public function getSubCategory() {
         return $this->sub_category;
     }
 
@@ -86,8 +83,7 @@ class Footprint {
      * @param float $value
      * @return self
      */
-    public function setValue($value)
-    {
+    public function setValue($value) {
         $this->value = $value;
         return $this;
     }
@@ -97,8 +93,7 @@ class Footprint {
      *
      * @return float $value
      */
-    public function getValue()
-    {
+    public function getValue() {
         return $this->value;
     }
 
@@ -108,8 +103,7 @@ class Footprint {
      * @param C4C\Bundle\GreenmeBundle\Document\User $user
      * @return self
      */
-    public function setUser(\C4C\Bundle\GreenmeBundle\Document\User $user)
-    {
+    public function setUser(\C4C\Bundle\GreenmeBundle\Document\User $user) {
         $this->user = $user;
         return $this;
     }
@@ -119,41 +113,17 @@ class Footprint {
      *
      * @return C4C\Bundle\GreenmeBundle\Document\User $user
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->user;
     }
-
-    /**
-     * Set location
-     *
-     * @param string $location
-     * @return self
-     */
-    public function setLocation($location)
-    {
-        $this->location = $location;
-        return $this;
-    }
-
-    /**
-     * Get location
-     *
-     * @return string $location
-     */
-    public function getLocation()
-    {
-        return $this->location;
-    }
-
+    
     /**
      * Set location_type
      *
      * @param string $locationType
      * @return self
      */
-    public function setLocationType($locationType)
-    {
+    public function setLocationType($locationType) {
         $this->location_type = $locationType;
         return $this;
     }
@@ -163,8 +133,7 @@ class Footprint {
      *
      * @return string $locationType
      */
-    public function getLocationType()
-    {
+    public function getLocationType() {
         return $this->location_type;
     }
 
@@ -174,8 +143,7 @@ class Footprint {
      * @param timestamp $created
      * @return self
      */
-    public function setCreated($created)
-    {
+    public function setCreated($created) {
         $this->created = $created;
         return $this;
     }
@@ -185,8 +153,30 @@ class Footprint {
      *
      * @return timestamp $created
      */
-    public function getCreated()
-    {
+    public function getCreated() {
         return $this->created;
+    }
+
+
+    /**
+     * Set coordinates
+     *
+     * @param C4C\Bundle\GreenmeBundle\Document\FootprintCoordinates $coordinates
+     * @return self
+     */
+    public function setCoordinates(\C4C\Bundle\GreenmeBundle\Document\FootprintCoordinates $coordinates)
+    {
+        $this->coordinates = $coordinates;
+        return $this;
+    }
+
+    /**
+     * Get coordinates
+     *
+     * @return C4C\Bundle\GreenmeBundle\Document\FootprintCoordinates $coordinates
+     */
+    public function getCoordinates()
+    {
+        return $this->coordinates;
     }
 }

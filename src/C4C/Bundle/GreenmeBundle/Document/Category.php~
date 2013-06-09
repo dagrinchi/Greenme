@@ -5,32 +5,35 @@ namespace C4C\Bundle\GreenmeBundle\Document;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as MongoDB;
 
 /**
-* @MongoDB\Document
-*/
+ * @MongoDB\Document
+ */
 class Category {
 
-	/**
-	* @MongoDB\Id(strategy="auto")
-	*/
-	protected $id;
+    /**
+     * @MongoDB\Id(strategy="auto")
+     */
+    protected $id;
 
-	/**
-	* @MongoDB\String
-	*/
-	protected $name;
+    /**
+     * @MongoDB\String
+     */
+    protected $name;
 
-	/**
-	* @MongoDB\String
-	*/
-	protected $icon;
+    /**
+     * @MongoDB\String
+     */
+    protected $icon;
+    
+    public function __toString() {
+        return $this->name;
+    }
 
     /**
      * Get id
      *
      * @return id $id
      */
-    public function getId()
-    {
+    public function getId() {
         return $this->id;
     }
 
@@ -40,8 +43,7 @@ class Category {
      * @param string $name
      * @return self
      */
-    public function setName($name)
-    {
+    public function setName($name) {
         $this->name = $name;
         return $this;
     }
@@ -51,8 +53,7 @@ class Category {
      *
      * @return string $name
      */
-    public function getName()
-    {
+    public function getName() {
         return $this->name;
     }
 
@@ -62,8 +63,7 @@ class Category {
      * @param string $icon
      * @return self
      */
-    public function setIcon($icon)
-    {
+    public function setIcon($icon) {
         $this->icon = $icon;
         return $this;
     }
@@ -73,8 +73,8 @@ class Category {
      *
      * @return string $icon
      */
-    public function getIcon()
-    {
+    public function getIcon() {
         return $this->icon;
     }
+
 }

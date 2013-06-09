@@ -22,13 +22,13 @@ class Group extends BaseGroup
 
 
     /**
-    * @MongoDB\Timestamp
+    * @MongoDB\Date
     */
     protected $created;
 
 
     public function __construct() {
-        $this->created = new \DateTime('now');
+        $this->created = new \MongoDate();
     }
 
     /**
@@ -61,5 +61,27 @@ class Group extends BaseGroup
     public function getName()
     {
         return $this->name;
+    }
+
+    /**
+     * Set created
+     *
+     * @param timestamp $created
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return timestamp $created
+     */
+    public function getCreated()
+    {
+        return $this->created;
     }
 }

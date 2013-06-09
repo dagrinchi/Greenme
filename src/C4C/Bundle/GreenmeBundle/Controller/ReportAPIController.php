@@ -35,7 +35,7 @@ class ReportAPIController extends Controller {
     /**
      * @ApiDoc(
      *  resource=true,
-     *  description="Este metodo devuelve el listado de reportes.",
+     *  description="Este metodo devuelve el listado de reportes",
      *  statusCodes={
      *         200="Retorna con éxito",
      *         401="Retorna cuando no está autorizado",
@@ -89,6 +89,7 @@ class ReportAPIController extends Controller {
      *         404="Retorna cuando no encuentra un reporte."
      *     }
      * )
+     * @View
      */
     public function postAction(Request $r) {
         
@@ -114,10 +115,11 @@ class ReportAPIController extends Controller {
 
             $result['flash'] = 'Item creado con éxito.';
         } else {
-            $result['flash'] = 'Hay errores en el formulario.';
+            $view = new FOSView();
+            return $view->setStatusCode(500);            
         }
 
-        return new JsonResponse($result);
+        return $report;
     }
 
     /**
@@ -155,7 +157,8 @@ class ReportAPIController extends Controller {
 
             $result['flash'] = 'Item actualizado con éxito.';
         } else {
-            $result['flash'] = 'Hay errores en el formulario.';
+            $view = new FOSView();
+            return $view->setStatusCode(500);
         }
 
         return new JsonResponse($result);

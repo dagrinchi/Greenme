@@ -6,25 +6,22 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
-class ReportType extends AbstractType {
+class FootprintCoordinatesType extends AbstractType {
 
 	public function buildForm(FormBuilderInterface $builder, array $options) {        
-	    $builder->add('title')
-	    		->add('coordinates', new ReportCoordinatesType())	    			    		
-	    		->add('location_type')	    		
-	    		->add('picture_file', 'file')	    		
-	    		//->add('sub_categories')
+	    $builder->add('latitude')
+                    ->add('longitude')
 	            ;		
 	}
 
 	public function getName() {
-	    return 'form_report';
+	    return 'form_footprint_coordinates';
 	}
 
 	public function setDefaultOptions(OptionsResolverInterface $resolver)
 	{
 	    $resolver->setDefaults(array(
-	        'data_class' => 'C4C\Bundle\GreenmeBundle\Document\Report',
+	        'data_class' => 'C4C\Bundle\GreenmeBundle\Document\FootprintCoordinates',
 	        'csrf_protection' => false
 	    ));
 	}
