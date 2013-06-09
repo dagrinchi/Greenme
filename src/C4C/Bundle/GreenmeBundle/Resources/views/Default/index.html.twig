@@ -1,71 +1,38 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&?key=AIzaSyAX8ZAOlyRxOPdDNnvXJNuvFY8jRYb8hrQ&sensor=false&libraries=visualization"></script> 
-        <script src="{{ asset('bundles/c4cgreenme/js/bootstrap.js') }}"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="{{ asset('bundles/c4cgreenme/js/map.js') }}"></script>
+{% extends "C4CGreenmeBundle::layout.html.twig" %}
+{% block content %}
+<div class="row-fluid">
+    <div id="map-canvas" class="span12">
 
-        <!-- <link rel="stylesheet" href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css"> -->
-        <link href='http://fonts.googleapis.com/css?family=Finger+Paint|Just+Me+Again+Down+Here|Titillium+Web|Indie+Flower' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{{ asset('bundles/c4cgreenme/css/bootstrap.css') }}">
-        <link rel="stylesheet" href="{{ asset('bundles/c4cgreenme/css/style.css') }}">
+    </div>
 
-        <meta charset="UTF-8">
-        <title>Green.me | User panel</title>
+</div>
 
-    </head>
-    <body class="body">
-        <div class="container">
-            <div class="header row-fluid">
-                <div class="span12">
-                    <img src="{{ asset('bundles/c4cgreenme/img/logo.png') }}" alt="" class="logo" />
-                </div>
-            </div>
-
-            <div class="row-fluid">
-                <div id="map-canvas" class="span12">
-
-                </div>
-
-            </div>
-
-            <div class="row-fluid">
-                <div class="span4">
-                    <h3>Reporta</h3>
-                    <p class="resume">
-                        Ayúdanos a identificar en dónde se están realizando prácticas que impactan de forma negativa o proactiva al planeta, Conviertete en un guardián.
-                    </p>
-                    <a href="{{ url("green_reporta") }}" class="btn more">Ver mas...</a>
-                </div>
-                <div class="span4">
-                    <h3>Hábitos</h3>
-                    <p class="resume">
-                        Descubre aquí cual es tu huella ecologica y qué forma cada uno de tus hábitos cotidianos generan un impacto 
-                    </p>
-                    <a href="{{ url("green_habitos") }}" class="btn more">Ver mas...</a>
-                </div>
-                <div class="span4">
-                    <h3>Aprende</h3>
-                    <p class="resume">
-                        Conoce las diferentes formas en que puedes disminuir tu huella ecologica. Llenate de ideas eco que te permitirán ser un humano mas verde, Reduce, Reusa, Recicla, Recrea 
-                    </p>
-                    <a href="{{ url("green_aprende") }}" class="btn more">Ver mas...</a>
-                </div>
-            </div>
-            <div class="row-fluid">
-                <div class="span2 offset5">
-                    <a href="{{ url("green_registration") }}" class="btn green">Regístrate!</a>
-                </div>
-            </div>
-            <div class="row-fluid">
-                <div class="span12 footer">
-
-                </div>
-            </div>
-        </div>
-
-
-    </body>
-</html>
+<div class="row-fluid">
+    <div class="span4">
+        <h3>Reporta</h3>
+        <p class="resume">
+            Ayúdanos a identificar en dónde se están realizando prácticas que impactan de forma negativa o proactiva al planeta, Conviertete en un guardián.
+        </p>
+        <a href="{{ url("green_reporta") }}" class="btn more">Ver mas...</a>
+    </div>
+    <div class="span4">
+        <h3>Hábitos</h3>
+        <p class="resume">
+            Descubre aquí cual es tu huella ecologica y qué forma cada uno de tus hábitos cotidianos generan un impacto 
+        </p>
+        <a href="{{ url("green_habitos") }}" class="btn more">Ver mas...</a>
+    </div>
+    <div class="span4">
+        <h3>Aprende</h3>
+        <p class="resume">
+            Conoce las diferentes formas en que puedes disminuir tu huella ecologica. Llenate de ideas eco que te permitirán ser un humano mas verde, Reduce, Reusa, Recicla, Recrea 
+        </p>
+        <a href="{{ url("green_aprende") }}" class="btn more">Ver mas...</a>
+    </div>
+</div>
+<div class="row-fluid">
+    <div class="span2 offset5">
+        <a href="{{ url("green_registration") }}" class="btn green">Regístrate!</a>
+    </div>
+</div>
+{% endblock %}

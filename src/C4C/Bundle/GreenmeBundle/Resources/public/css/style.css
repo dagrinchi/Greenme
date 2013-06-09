@@ -107,3 +107,7 @@ a.more {
     max-width: 100px;
     position: relative;
 }
+.alert{
+    text-align: center;
+    font-size: 30px;    
+}

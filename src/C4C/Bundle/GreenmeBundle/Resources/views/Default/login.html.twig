@@ -1,0 +1,40 @@
+{% extends "C4CGreenmeBundle::forms.html.twig" %}
+{% block content %}
+<div class="span8 offset2 one-page-form">
+                        <div class="container-fluid">	
+                                <div class="form span8 offset1">
+                                 <form action="">
+                                    <div class="control-group container-fluid">
+                                       <label class="control-label span6" for="inputEmail">Correo electrónico</label>
+                                       <div class="controls span6">
+                                        <div class="row-fluid">
+                                         <input class="span12" type="text" id="inputEmail" placeholder="Ingrese su correo electrónico">
+                                        </div>
+                                       </div>
+                                     </div>
+                                     <div class="control-group container-fluid">
+                                       <label class="control-label span6" for="inputPassword">Contraseña</label>
+                                       <div class="controls span6">
+                                        <div class="row-fluid">
+                                            <input class="span12" type="password" id="inputPassword" placeholder="Ingrese su contraseña">
+                                        </div>
+                                       </div>
+                                     </div>
+                                     <div class="control-group container-fluid">
+                                       <div class="controls">
+                                         <label class="checkbox span3 offset1">
+                                           <input type="checkbox">Recordarme</label>
+                                         <button type="submit" class="form-btn span3 offset1">Ingresar</button>
+                                         <a class="form-btn span3 offset1" href="">Regístrate!</a>
+                                       </div>
+                                     </div>	
+                                 </form>		
+                                </div>
+                                <div class="social-auth span1">
+                                         <a href=""><img src="{{ asset('bundles/c4cgreenme/img/facebook_001.jpg') }}" alt="Usar Facebook" /></a>
+                                         <a href=""><img src="{{ asset('bundles/c4cgreenme/img/Twitter_001.jpg') }}" alt="Usar Twitter" /></a>
+
+                                </div>
+                            </div>
+                        </div>
+{% endblock %}

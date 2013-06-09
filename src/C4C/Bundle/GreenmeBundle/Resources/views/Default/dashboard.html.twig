@@ -1,0 +1,39 @@
+{% extends "C4CGreenmeBundle::layout.html.twig" %}
+{% block content %}
+<div class="content container-fluid">
+    <div class="span2">
+        <div class="tabbable tabs-left"> <!-- Only required for left/right tabs -->
+          <ul class="nav nav-tabs">
+            <li class="active"><a href="#tab1" data-toggle="tab">Mis Reportes</a></li>
+            <li><a href="#tab2" data-toggle="tab">Mis Habitos</a></li>
+          </ul>
+          <div class="tab-content">
+            <div class="tab-pane active" id="tab1">
+               <p>x</p>
+            </div>
+            <div class="tab-pane" id="tab2">
+              <p>y</p>
+            </div>
+          </div>
+        </div>
+        </div>
+    <div class="span7">
+    </div>
+    <div class="span3">
+      <div class="tabbable tabs-below"> <!-- Only required for left/right tabs -->
+                  <ul class="nav nav-tabs">
+                    <li class="active"><a href="#tab1" data-toggle="tab">Cerca a mi</a></li>
+                    <li><a href="#tab2" data-toggle="tab">Todos</a></li>
+                  </ul>
+                  <div class="tab-content">
+                    <div class="tab-pane active" id="tab1">
+                      <p>Reportes cercanos</p>
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                      <p>Todos los reportes</p>
+                    </div>
+                  </div>
+                </div>
+    </div>
+</div>
+{% endblock %}

@@ -48,4 +48,20 @@ class DefaultController extends Controller
     public function reportaAction() {
         return array();
     }
+    
+    /**
+     * @Route("/login", name="green_login")
+     * @Template()
+     */
+    public function loginAction() {
+        return array();
+    }
+    
+    /**
+     * @Route("/dashboard", name="green_dashboard")
+     * @Template()
+     */
+    public function dashboardAction() {
+        return array();
+    }
 }
