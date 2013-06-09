@@ -5,6 +5,7 @@ namespace C4C\Bundle\GreenmeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use JMS\SecurityExtraBundle\Annotation\Secure;
 
 class DefaultController extends Controller
 {
@@ -26,6 +27,7 @@ class DefaultController extends Controller
     }    
     
     /**
+     * @Secure(roles="ROLE_USER")
      * @Route("/aprende", name="green_aprende")
      * @Template()
      */
@@ -34,6 +36,7 @@ class DefaultController extends Controller
     }
     
     /**
+     * @Secure(roles="ROLE_USER")
      * @Route("/habitos", name="green_habitos")
      * @Template()
      */
@@ -42,11 +45,14 @@ class DefaultController extends Controller
     }
     
     /**
+     * @Secure(roles="ROLE_USER")
      * @Route("/reporta", name="green_reporta")
      * @Template()
      */
-    public function reportaAction() {
-        return array();
+    public function reportaAction() {        
+        $dm = $this->get('doctrine_mongodb')->getManager();
+        $reports = $dm->getRepository('C4CGreenmeBundle:Report')->findAll()->toArray();
+        return array('reports' => $reports);
     }
     
     /**
@@ -58,6 +64,7 @@ class DefaultController extends Controller
     }
     
     /**
+     * @Secure(roles="ROLE_USER")
      * @Route("/dashboard", name="green_dashboard")
      * @Template()
      */

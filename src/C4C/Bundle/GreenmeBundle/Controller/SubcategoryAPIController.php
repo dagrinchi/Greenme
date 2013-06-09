@@ -52,6 +52,28 @@ class SubcategoryAPIController extends FOSRestController {
                 ->setHeader('Access-Control-Allow-Origin', '*');                
         return $view;
     }
+    
+    /**
+     * @ApiDoc(
+     *  resource=true,
+     *  description="Este metodo muestra la información por categoría",
+     *  statusCodes={
+     *         200="Retorna con éxito",
+     *         401="Retorna cuando no está autorizado",
+     *         404="Retorna cuando no encuentra una subcategoria"
+     *     }
+     * )
+     */
+    public function getShowAction($category) {
+
+        $dm = $this->get('doctrine_mongodb')->getManager();
+        $scats = $dm->getRepository('C4CGreenmeBundle:Subcategory')
+                ->findBy(array('category' => $category))
+                ->toArray();
+        $view = $this->view($scats, 200)
+                ->setHeader('Access-Control-Allow-Origin', '*');                
+        return $view;
+    }
 
     /**
      * @ApiDoc(

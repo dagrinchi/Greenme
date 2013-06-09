@@ -15,7 +15,7 @@ class Subcategory {
     protected $id;
 
     /**
-     * @MongoDB\ReferenceOne(targetDocument="Category")
+     * @MongoDB\ReferenceOne(targetDocument="Category", inversedBy="subcategories")
      */
     protected $category;
 
@@ -38,6 +38,10 @@ class Subcategory {
      * @MongoDB\String
      */
     protected $icon;
+    
+    public function __toString() {
+        return $this->name;
+    }
 
     /**
      * Get id

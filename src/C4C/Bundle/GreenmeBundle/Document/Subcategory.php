@@ -15,7 +15,7 @@ class Subcategory {
     protected $id;
 
     /**
-     * @MongoDB\ReferenceOne(targetDocument="Category")
+     * @MongoDB\ReferenceOne(targetDocument="Category", inversedBy="subcategories")
      */
     protected $category;
 

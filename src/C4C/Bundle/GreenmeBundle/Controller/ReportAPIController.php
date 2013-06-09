@@ -93,17 +93,15 @@ class ReportAPIController extends Controller {
      */
     public function postAction(Request $r) {
         
-        if (!$this->isAuthenticated()) {
-            $view = new FOSView();
-            return $view->setStatusCode(401);
-        }
-        
         $dm = $this->get('doctrine_mongodb')->getManager();
+        $user = $this->get('security.context')->getToken()->getUser();
 
 //	$data = json_decode($r->getContent(), true);
 //    	$r->request->replace(is_array($data) ? $data : array());
 
         $report = new Report();
+        $report->setUser($user);
+        
         $form = $this->createForm(new ReportType(), $report);
         $form->bind($r);
 

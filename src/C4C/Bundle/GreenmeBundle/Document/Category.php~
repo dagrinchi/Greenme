@@ -24,6 +24,13 @@ class Category {
      */
     protected $icon;
     
+    
+    /**
+     * @MongoDB\ReferenceMany(targetDocument="Subcategory", inversedBy="category")
+     */
+    protected $subcategories;
+
+
     public function __toString() {
         return $this->name;
     }
