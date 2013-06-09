@@ -1,7 +1,7 @@
-# C4CGreenmeBundle:
-#   resource: "@C4CGreenmeBundle/Controller/"
-#   type: annotation
-#   prefix: /api
+C4CGreenmeBundle:
+  resource: "@C4CGreenmeBundle/Controller/"
+  type: annotation
+  prefix: /
 
 C4CGreenmeBundle_GroupAPI:
   resource: C4C\Bundle\GreenmeBundle\Controller\GroupAPIController

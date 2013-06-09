@@ -5,6 +5,7 @@ namespace C4C\Bundle\GreenmeBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use FOS\RestBundle\Controller\Annotations\Prefix,
     FOS\RestBundle\Controller\Annotations\NamePrefix,
     FOS\RestBundle\Controller\Annotations\View,
@@ -67,11 +68,14 @@ class FootprintAPIController  extends FOSRestController {
     public function postAction(Request $r) {        
         
         $dm = $this->get('doctrine_mongodb')->getManager();
+        $user = $this->get('security.context')->getToken()->getUser();
 
 //	$data = json_decode($r->getContent(), true);
 //    	$r->request->replace(is_array($data) ? $data : array());
 
         $footp = new Footprint();
+        $footp->setUser($user);
+        
         $form = $this->createForm(new FootprintType(), $footp);
         $form->bind($r);
 
@@ -90,6 +94,27 @@ class FootprintAPIController  extends FOSRestController {
         $view = $this->view($footp, 200)
                 ->setHeader('Access-Control-Allow-Origin', '*');                
         return $view;
+    }
+    
+     /**
+     * @ApiDoc(
+     *  description="Eliminar una huella",     
+     *  statusCodes={
+     *         200="Retorna con éxito",
+     *         401="Retorna cuando no está autorizado",
+     *         404="Retorna cuando no encuentra un reporte."
+     *     }
+     * )
+     */
+    public function deleteAction($id) {
+        
+        $dm = $this->get('doctrine_mongodb')->getManager();
+        $footp = $dm->getRepository('C4CGreenmeBundle:Footprint')->find($id);
+
+        $dm->remove($footp);
+        $dm->flush();
+
+        return new JsonResponse(array('flash' => 'Item eliminado'));
     }
 
 }
