@@ -54,6 +54,10 @@ class Footprint {
         return $this->id;
     }
 
+    public function __construct() {
+        $this->created = new \DateTime("now");
+    }
+
     /**
      * Set sub_category
      *
@@ -118,5 +122,71 @@ class Footprint {
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set location
+     *
+     * @param string $location
+     * @return self
+     */
+    public function setLocation($location)
+    {
+        $this->location = $location;
+        return $this;
+    }
+
+    /**
+     * Get location
+     *
+     * @return string $location
+     */
+    public function getLocation()
+    {
+        return $this->location;
+    }
+
+    /**
+     * Set location_type
+     *
+     * @param string $locationType
+     * @return self
+     */
+    public function setLocationType($locationType)
+    {
+        $this->location_type = $locationType;
+        return $this;
+    }
+
+    /**
+     * Get location_type
+     *
+     * @return string $locationType
+     */
+    public function getLocationType()
+    {
+        return $this->location_type;
+    }
+
+    /**
+     * Set created
+     *
+     * @param timestamp $created
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+        return $this;
+    }
+
+    /**
+     * Get created
+     *
+     * @return timestamp $created
+     */
+    public function getCreated()
+    {
+        return $this->created;
     }
 }

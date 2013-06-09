@@ -1,6 +1,7 @@
-C4CGreenmeBundle:
-  resource: C4C\Bundle\GreenmeBundle\Controller\DefaultController
-  type: annotation
+# C4CGreenmeBundle:
+#   resource: "@C4CGreenmeBundle/Controller/"
+#   type: annotation
+#   prefix: /api
 
 C4CGreenmeBundle_ReportAPI:
   resource: C4C\Bundle\GreenmeBundle\Controller\ReportAPIController

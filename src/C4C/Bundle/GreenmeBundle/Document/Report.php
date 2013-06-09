@@ -51,7 +51,7 @@ class Report {
 
     public function __construct()
     {
-        $this->created = new \DateTime("now");
+        $this->created = new \MongoTimestamp();
         $this->sub_categories = new \Doctrine\Common\Collections\ArrayCollection();
     }
     
