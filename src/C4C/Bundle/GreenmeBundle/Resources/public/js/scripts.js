@@ -14,7 +14,18 @@ $(document).ready(function(){
             beforeSubmit:  showRequest,  
             success:       showResponse 
         };
+        
+    if($('#registration').length)
         $('#registration').ajaxForm(options);
+        
+        if($('#categories').length){
+            $.getJSON('http://greenme.co/category.json', function(data){
+                $('#categories').append('<ul class="categories row-fluid"></ul>');
+                $.each(data, function(index, category){
+                    $('#categories ul').append('<li class="span1 offset1"><a id="'+category.icon+'" class="category" href="http://greenme.co/subcategory.json?id='+category.id+'">'+category.name+'</a></li>');
+                });
+            });
+        }
     
 
 });
