@@ -71,4 +71,17 @@ class DefaultController extends Controller
     public function dashboardAction() {
         return array();
     }
+    
+    /**
+     * @Secure(roles="ROLE_USER")
+     * @Route("/footprint", name="green_footprint")
+     * @Template()
+     */
+    public function footprintAction() {
+        $req = $this->getRequest()->query->get('subcategory');
+        $manager = $this->get('doctrine_mongodb')->getManager();
+        $subcategory = $manager->getRepository('C4CGreenmeBundle:Category')->find($req);
+        
+        return array('subcategory' => $subcategory);
+    }
 }

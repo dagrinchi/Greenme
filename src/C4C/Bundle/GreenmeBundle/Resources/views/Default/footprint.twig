@@ -1,0 +1,28 @@
+<div class="span12 one-page-form">
+    <div class="container-fluid">	
+        <div class="form span10 offset1">
+            <form class="form-horizontal" id="registration" action="http://greenme.co/registration.json">
+                <fieldset>
+                    <!-- Form Name -->
+                    <legend>Nuevo hábito</legend>
+                    <!-- Text input-->
+                    <div class="control-group">
+                        <label class="control-label" for="form_footprint[value]">{{ subcategory->getId() }}</label>
+                        <div class="controls">
+                            <input id="firstName" name="form_footprint[value]]" type="text" placeholder="Indica la cantidad de consumo" class="input-xlarge" required="">
+                        </div>
+                    </div>
+                    <input type="hidden" value="form_footprint[sub_category]">
+                    <!-- Button (Double) -->
+                    <div class="control-group">
+                        <div class="controls">
+                            <button id="saveButton" type="submit" name="saveButton" class="form-btn btn-success">Guardar</button>
+                            <button id="cancelButton" name="cancelButton" class="form-btn btn-danger">Cancelar</button>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>		
+        </div>
+    </div>
+</div>
