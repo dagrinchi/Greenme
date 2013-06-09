@@ -111,3 +111,55 @@ a.more {
     text-align: center;
     font-size: 30px;    
 }
+ul.categories{
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 10 0 0;
+}
+ul.categories li{
+    display: block;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+ul.categories li a{
+    font-family: 'Just Me Again Down Here';
+    display: block;
+    position: relative;
+    float:left;
+    width:94px;
+    padding-top: 96px;
+    text-align: center;
+    font-size: 20px;
+}
+a#transporte{
+    background: url("../img/icons/transport.png") no-repeat scroll center top transparent;
+}
+a#residuos{
+    background: url("../img/icons/water.png") no-repeat scroll center top transparent;
+}
+a#energia{
+    background: url("../img/icons/garbage.png") no-repeat scroll center top transparent;
+}
+a#agua{
+    background: url("../img/icons/energy.png") no-repeat scroll center top transparent;
+}
+a#consumo{
+    background: url("../img/icons/cart.png") no-repeat scroll center top transparent;
+}
+a#transporte:hover{
+    background: url("../img/icons/hv/transport.png") no-repeat scroll center top transparent;
+}
+a#residuos:hover{
+    background: url("../img/icons/hv/water.png") no-repeat scroll center top transparent;
+}
+a#energia:hover{
+    background: url("../img/icons/hv/garbage.png") no-repeat scroll center top transparent;
+}
+a#agua:hover{
+    background: url("../img/icons/hv/energy.png") no-repeat scroll center top transparent;
+}
+a#consumo:hover{
+    background: url("../img/icons/hv/cart.png") no-repeat scroll center top transparent;
+}
