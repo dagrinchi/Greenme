@@ -68,8 +68,10 @@ class SubcategoryAPIController extends FOSRestController {
 
         $dm = $this->get('doctrine_mongodb')->getManager();
         $scats = $dm->getRepository('C4CGreenmeBundle:Subcategory')
-                ->findBy(array('category' => $category))
-                ->toArray();
+                    ->createQueryBuilder()
+                    ->field('category')->equals($category)
+                    ->getQuery()->execute()->toArray();
+                
         $view = $this->view($scats, 200)
                 ->setHeader('Access-Control-Allow-Origin', '*');                
         return $view;
