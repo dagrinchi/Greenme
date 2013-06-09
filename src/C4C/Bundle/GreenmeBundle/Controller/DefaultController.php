@@ -56,7 +56,7 @@ class DefaultController extends Controller
     }
     
     /**
-     * @Route("/login", name="green_login")
+     * @Route("/log", name="green_login")
      * @Template()
      */
     public function loginAction() {
