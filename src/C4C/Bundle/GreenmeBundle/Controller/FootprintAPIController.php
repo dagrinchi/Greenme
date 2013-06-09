@@ -62,15 +62,9 @@ class FootprintAPIController  extends FOSRestController {
      *         401="Retorna cuando no está autorizado",
      *         404="Retorna cuando no encuentra una huella"
      *     }
-     * )
-     * @View
+     * )     
      */
-    public function postAction(Request $r) {
-        
-        if (!$this->isAuthenticated()) {
-            $view = new FOSView();
-            return $view->setStatusCode(401);
-        }
+    public function postAction(Request $r) {        
         
         $dm = $this->get('doctrine_mongodb')->getManager();
 
@@ -93,7 +87,9 @@ class FootprintAPIController  extends FOSRestController {
             return $view->setStatusCode(500);            
         }
 
-        return $footp;
+        $view = $this->view($footp, 200)
+                ->setHeader('Access-Control-Allow-Origin', '*');                
+        return $view;
     }
 
 }
